@@ -1,0 +1,10 @@
+from collections import Counter
+class Solution:
+    def numJewelsInStones(self, J: str, S: str) -> int:
+        D = Counter(J)
+        match = Counter(S)
+        res = 0
+        for k in match:
+            if k in D:
+                res += match[k]
+        return res

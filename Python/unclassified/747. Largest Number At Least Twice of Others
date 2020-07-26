@@ -1,0 +1,20 @@
+class Solution:
+    def dominantIndex(self, nums: List[int]) -> int:
+        MAX = 0
+        flag = True
+        next_MAX = 0
+        for i,x in enumerate(nums):
+            if x <= MAX:
+                if x > next_MAX:
+                    next_MAX = x
+                    
+            if x > MAX:
+                next_MAX = MAX
+                MAX = x
+                res = i
+        # print(MAX)
+        # print(next_MAX)
+        if MAX >=  2 * next_MAX:
+            return res
+        return -1
+                

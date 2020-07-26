@@ -1,0 +1,25 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def minDiffInBST(self, root: TreeNode) -> int:
+        tree = []
+        stack = []
+        curr = root
+        prev = "head"
+        while curr or stack:
+            while curr:
+                prev = curr
+                stack.append(curr)
+                curr = curr.left
+            curr = stack.pop()
+            tree.append(curr.val)
+            curr = curr.right
+        tree = sorted(tree)
+        print(tree)
+        return min([y - x for x,y in zip(tree[:-1], tree[1:])])
+# The intuition is use stack to go through each leaf and make it a list. The next goal is to get the least diff between two elements. 
+# Sort the list and then zip it into pairs and then get diff

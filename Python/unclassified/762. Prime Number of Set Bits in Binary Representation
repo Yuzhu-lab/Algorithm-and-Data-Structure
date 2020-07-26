@@ -1,0 +1,19 @@
+class Solution:
+    import math
+    def IsPrime(self, x):
+        if x == 1:
+            return False
+        for i in range(2, int(math.sqrt(x)+1)):
+            if x%i == 0:
+                return False
+        return True
+
+    def countPrimeSetBits(self, L,R) -> int:
+        res = 0
+        for x in range(L, R+1):
+            temp = bin(x)
+            tem = map(int, filter(lambda x: x == "1", temp))
+            if self.IsPrime(sum(list(tem))):
+                res += 1
+        return res
+# str.count(substring) can give you how many sub appears in str

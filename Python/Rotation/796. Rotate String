@@ -1,0 +1,7 @@
+class Solution:
+    def rotateString(self, A: str, B: str) -> bool:
+        B = B + B
+        if A in B and len(A) == 0.5 * len(B):
+            return True
+        return False
+# Cool trick for string rotation

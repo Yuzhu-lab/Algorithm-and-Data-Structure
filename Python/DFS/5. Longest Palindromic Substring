@@ -1,0 +1,29 @@
+# Dynamic Programming
+# Start from mid point
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        if s == "":
+            return ""
+        if len(s) <= 1:
+            return s[0]
+        
+        def helper (s, left, right):          
+            while left>=0 and right<=len(s)-1 and s[left] == s[right]:
+                left -= 1
+                right += 1
+            return right-1 - left
+        n = len(s)
+        max_len = 0
+        temp = ""
+        for i in range(0,n):
+            len1 = helper(s,i,i)
+            len2 = helper(s,i,i+1)
+            # print(len2)
+            if max(len1,len2) > max_len:
+                max_len = max(len1,len2)
+                L = i - ((max_len - 1)//2)
+                R = i + ((max_len)//2)
+        
+        print(max_len)
+        return s[L: R+1]

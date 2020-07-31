@@ -1,0 +1,24 @@
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        diff = float("inf")
+        for i in range(len(nums)):
+            l,r = i + 1,len(nums)-1
+            while l < r:
+                temp = nums[l] + nums[r] + nums[i]
+                if abs(temp - target) < diff:
+                    res = temp
+                    diff = abs(res - target)
+                    # print("diff____")
+                    # print(target)
+                    # print(diff)
+                    # print(res)
+                    
+                if temp > target:
+                    r -= 1
+                    continue
+                elif temp < target:
+                    l += 1  
+                else:
+                    return res
+        return res

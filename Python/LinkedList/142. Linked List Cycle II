@@ -1,0 +1,13 @@
+class Solution:
+    def detectCycle(self, head: ListNode) -> ListNode:
+        try:
+            fast, slow  = head.next, head
+            while fast != slow:
+                fast, slow = fast.next.next, slow.next
+            slow = slow.next
+            while slow != head:
+                head = head.next
+                slow = slow.next
+            return head
+        except:
+            return None

@@ -1,0 +1,38 @@
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        def node_to_number(node):
+            res = 0
+            counter = 0
+            while node:
+                res += pow(10,counter) * node.val
+                counter += 1
+                node = node.next
+            return res
+                
+        def number_to_node(number):
+            head = node = ListNode(0)
+            if number == 0:
+                return ListNode(0)
+            while number!= 0:
+                temp = number % 10
+                number //= 10
+                node.next = ListNode(temp)
+                node = node.next
+            return head.next
+                
+        ans = int(node_to_number(l1) + node_to_number(l2))
+        return number_to_node(ans)
+        
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        def node_to_number(node):
+            return node.val + 10 * (node_to_number(node.next)) if node else 0
+                
+        def number_to_node(number):
+            node = ListNode(number % 10)
+            if number > 9:
+                node.next = number_to_node(number//10)
+            return node               
+        return number_to_node(node_to_number(l1) + node_to_number(l2))
+        
+        

@@ -1,0 +1,23 @@
+# Binary Search
+# The isBadVersion API is already defined for you.
+# @param version, an integer
+# @return an integer
+# def isBadVersion(version):
+
+# use two pointers to limit the field of search until converge
+class Solution:
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        p1 = 1
+        p2 = n
+        mid = 2
+        while p1 < p2:
+            mid = (p1 + p2)//2
+            if isBadVersion(mid):
+                p2 = mid
+            else:
+                p1 = mid + 1
+        return p1

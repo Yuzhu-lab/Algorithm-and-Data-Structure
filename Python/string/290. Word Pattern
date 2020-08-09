@@ -1,0 +1,15 @@
+class Solution:
+    def wordPattern(self, pattern: str, str: str) -> bool:
+        patter = [x for x in pattern]
+        string = str.split(" ")
+        if len(pattern) != len(string): return False
+        test = list(zip(patter,string))
+        # print(set(test))
+        record1 = []
+        record2 = []
+        for x in set(test):
+            if x[0] in record1 or x[1] in record2:
+                return False
+            record1.append(x[0])
+            record2.append(x[1])
+        return True

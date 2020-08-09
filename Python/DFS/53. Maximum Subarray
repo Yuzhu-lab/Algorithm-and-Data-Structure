@@ -1,0 +1,9 @@
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        # This is an optimization problem, so it can be solved by DP. The next step is what is the substate that I need to solve.
+        # If 1 element, return that number, if 2 elements, see if the 2nd element is larger than 0 and also check 1st is smaller or the 2nd....
+        # which is not a consistant pattern. The other way is we fix the last digit
+        dp = [nums[0]]
+        for x in nums[1:]:
+            dp.append(max(0,dp[-1])+x)
+        return max(dp)

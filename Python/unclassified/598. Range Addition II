@@ -1,0 +1,6 @@
+class Solution:
+    def maxCount(self, m: int, n: int, ops: List[List[int]]) -> int:
+        if not ops:
+            return m * n
+        res1, res2 = map(list, zip(*ops))
+        return min(res1) * min(res2)

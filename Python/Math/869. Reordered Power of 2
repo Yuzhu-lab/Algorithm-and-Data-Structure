@@ -1,0 +1,8 @@
+from itertools import permutations
+
+class Solution:
+    def reorderedPowerOf2(self, N: int) -> bool:
+        return any(x[0]!= "0" and bin(int("".join(x))).count("1") == 1 for x in permutations(str(N)))
+        
+# Use itertools for permutations and returns list of chars
+# To know if an int is only the power of 2, use bin() to get the binary representation and if it only has one 1, then it is only the power of 2

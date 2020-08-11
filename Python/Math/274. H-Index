@@ -1,0 +1,24 @@
+# 1. sort the array
+# 2. what are the possible values of h index
+
+class Solution:
+    def hIndex(self, citations: List[int]) -> int:
+        if not citations or citations == [0]:
+            return 0
+        
+        citations.sort()
+        n = len(citations)
+        point = 0
+
+        def helper (pointer):  
+            bar = citations[point]
+            if  n - pointer >= bar:
+                return True
+            return False
+        
+        while point < n and helper(point):
+            point += 1
+            
+        if n - point + 1 == citations[point-1]:
+            return n - point + 1
+        return n - point

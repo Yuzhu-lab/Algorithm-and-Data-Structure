@@ -1,0 +1,11 @@
+from collections import Counter
+from math import comb
+class Solution:
+    def numEquivDominoPairs(self, dominoes: List[List[int]]) -> int:
+        dominoes = list(map(sorted, dominoes))
+        dominoes = list(map(lambda x: x[0] + x[1]/10, dominoes))
+        D = Counter(dominoes)
+        res = 0
+        for x in D:
+            res += comb(D[x], 2)
+        return res

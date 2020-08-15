@@ -1,0 +1,10 @@
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        def get_soliders (M, k):
+            D = dict()
+            for i, x in enumerate(M):
+                D[i] = sum(M[i])
+            return D
+        DataBase = get_soliders(mat, k)
+        sorted_DB = dict(sorted(DataBase.items(), key = lambda i : i[1]))
+        return list(sorted_DB.keys())[:k]

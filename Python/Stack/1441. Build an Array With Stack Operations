@@ -1,0 +1,13 @@
+# We use yield when we don't want the temporary 
+# yield x means that when you get this line, take value x and send out of the function as the next element in the sequence
+# Using yield, I don't need to allocate a big list at the very beginning
+
+class Solution:
+    def buildArray(self, target: List[int], n: int) -> List[str]:     
+        pointer1 = 1
+        for x in target:    
+            yield "Push"
+            while pointer1 < x:
+                yield from ("Pop", "Push")
+                pointer1 += 1
+            pointer1 += 1

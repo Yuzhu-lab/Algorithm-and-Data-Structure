@@ -1,0 +1,15 @@
+# The end points are always running towards the center point
+# sort the list first because abc here are just sign the stone and the sequence between a and b and c does not matter
+# the least is either 0 or 1 or 2
+# since they are all running towards the middle, the largest is (z-x-2) always
+class Solution:
+    def numMovesStones(self, a: int, b: int, c: int) -> List[int]:
+        x,y,z = sorted([a,b,c])
+        MAX = z - x -2
+        if x+1 == y == z-1:
+            return [0,0]
+        elif y == x+1 or z == y+1 or y == x + 2 or z==y+2:
+            return [1, MAX]
+        else:
+            return [2, MAX]
+        

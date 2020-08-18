@@ -1,0 +1,31 @@
+from collections import Counter
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        D = Counter(nums)
+        for x in nums:
+            temp = 0
+            for y in D:
+                if y < x:
+                    temp += D[y]
+            yield temp
+ 
+# the index after sorting tells how many num in this list is smaller than a specific number
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        D = dict()
+        for i, n in enumerate(sorted(nums)):
+            if n not in D:
+                D[n] = i
+        return[D[x] for x in nums]
+        
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        li = sorted(nums)
+        return[li.index(x) for x in nums]
+        
+# Use star to unpack the map to a list of numbers
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        li = sorted(nums)
+        return[*map(li.index, nums)]
+                

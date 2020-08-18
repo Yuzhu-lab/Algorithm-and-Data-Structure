@@ -1,0 +1,17 @@
+class Solution:
+    def repeatedNTimes(self, A: List[int]) -> int:
+        template = []
+        for x in A:
+            if x in template:
+                return x
+            template.append(x)
+            
+# Use Hashmap and get the most_common
+from collections import Counter
+class Solution:
+    def repeatedNTimes(self, A: List[int]) -> int:
+        return Counter(A).most_common(1)[0][0]
+        
+class Solution:
+    def repeatedNTimes(self, A: List[int]) -> int:
+        return (sum(A) - sum(set(A)))//(len(A)//2 -1)

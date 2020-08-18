@@ -1,0 +1,10 @@
+from collections import Counter
+from math import comb
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        D = Counter(nums)
+        res = 0
+        for x in D:
+            if D[x]>1:
+                res += comb(D[x],2)
+        return res

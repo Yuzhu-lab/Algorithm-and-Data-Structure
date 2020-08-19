@@ -1,0 +1,9 @@
+from collections import Counter
+class Solution:
+    def uncommonFromSentences(self, A: str, B: str) -> List[str]:
+        A = A.split(" ")
+        B = B.split(" ")
+        A = Counter(A)
+        B = Counter(B)
+        A.update(B)
+        return [res for res,v in A.items() if A[res]<2]

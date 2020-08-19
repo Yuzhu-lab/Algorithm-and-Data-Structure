@@ -1,0 +1,16 @@
+class Solution:
+    def toGoatLatin(self, S: str) -> str:
+        vowel = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+        res = ""
+        test = S.split(" ")
+        for i in range(0,len(test)):
+            x = test[i]
+            if x[0] in vowel:
+                x += "ma"
+            else:
+                temp = x[0]
+                x = x[1:]
+                x += temp+ "ma"
+            x += "a"*(i+1) + " "
+            res += (x)
+        return res.rstrip()

@@ -1,4 +1,5 @@
 # functools.reduce() is such an amazing function to implement function every two variables
+
 from collections import Counter
 from math import gcd
 class Solution:

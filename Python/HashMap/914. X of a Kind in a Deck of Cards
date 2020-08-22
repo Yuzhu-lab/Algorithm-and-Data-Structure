@@ -1,0 +1,21 @@
+from collections import Counter
+from math import gcd
+class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        D = Counter(deck)
+        target = [*D.values()]
+        N = len(deck)
+        while len(target) > 1:
+            x = math.gcd(target[-1], target[-2])
+            target[-2] = (x)
+            target.pop()
+        if target[0] >= 2 and N > 1:
+            return True     
+        return False
+        
+from collections import Counter
+from math import gcd
+from functools import reduce
+class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        return (reduce(gcd, Counter(deck).values()) != 1)

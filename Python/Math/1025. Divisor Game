@@ -1,0 +1,6 @@
+'''
+Assume N is the number that Alice will lose the game, so N+1 will be the number Alice win the game. Clearly, the result change alternatively. And it starts from 0
+'''
+class Solution:
+    def divisorGame(self, N: int) -> bool:
+        return N%2 == 0

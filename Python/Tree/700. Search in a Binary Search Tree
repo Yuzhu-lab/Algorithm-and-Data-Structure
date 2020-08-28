@@ -16,3 +16,17 @@ class Solution:
             if curr.val == val:
                 return curr
             curr = curr.right
+            
+class Solution:
+    def searchBST(self, root: TreeNode, val: int) -> TreeNode:
+        if not root:
+            return None
+        if root.val == val:
+            return root
+        else:
+            A = self.searchBST(root.left, val)
+            B = self.searchBST(root.right, val)
+            if A == None:
+                return B
+            return A
+        

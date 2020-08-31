@@ -1,0 +1,11 @@
+# Dictionary.elements() will return all elements in Dict.
+# D1 & D2 is innerjoin of two dictionaries
+
+from collections import Counter
+class Solution:
+    def commonChars(self, A: List[str]) -> List[str]:
+        T = Counter(A[0])
+        # print(T)
+        for x in A[1:]:
+            T = T&Counter(x)
+        return T.elements()

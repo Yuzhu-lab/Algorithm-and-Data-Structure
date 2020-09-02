@@ -1,0 +1,20 @@
+# Bucket Sort Algorithm
+class Solution:
+    def containsNearbyAlmostDuplicate(self, nums: List[int], k: int, t: int) -> bool:
+        if t < 0 :
+            return False
+        n = len(nums)
+        D = {}
+        w = t + 1
+        for i in range(n):
+            if i > k:
+                delete_bucket = nums[i - k -1]//w
+                del D[delete_bucket]
+            condition1 = (nums[i]//w in D)
+            condition2 = (nums[i]//w - 1 in D and abs(nums[i] - D[nums[i]//w - 1]) < w)
+            condition3 = (nums[i]//w + 1 in D and abs(nums[i] - D[nums[i]//w + 1]) < w)
+            # print(condition1)
+            if condition1 or condition2 or condition3:
+                return True
+            D[nums[i]//w] = nums[i]
+        return False

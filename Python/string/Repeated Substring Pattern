@@ -1,0 +1,13 @@
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:
+        S = s.split()
+        n = len(s)
+        test = n//2
+        while s[:test]:
+            temp = s[:test]
+            if n%len(s[:test]) == 0:
+                if s == temp * (n//len(temp)):
+                    return True
+            test -= 1
+        return False
+            

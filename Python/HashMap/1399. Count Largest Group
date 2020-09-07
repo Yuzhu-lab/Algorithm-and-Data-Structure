@@ -1,0 +1,6 @@
+from collections import Counter
+class Solution:
+    def countLargestGroup(self, n: int) -> int:
+        D = Counter(map(lambda x: sum(map(int, str(x))),  range(1, n+1)))
+        target = max(D.values())
+        return sum(v == target for x,v in D.items())

@@ -1,0 +1,7 @@
+# How it works: zip(*a) is equal to zip(a[0], a[1], a[2]).
+# transpose a matrix using zip(*matrix)
+class Solution:
+    def luckyNumbers (self, matrix: List[List[int]]) -> List[int]:
+        MIN = {min(x) for x in matrix}
+        MAX = {max(y) for y in zip(*matrix)}
+        return MIN & MAX

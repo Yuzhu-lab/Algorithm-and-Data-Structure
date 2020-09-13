@@ -1,0 +1,6 @@
+class Solution:
+    def findNumbers(self, nums: List[int]) -> int:
+        def helper(i):
+            return len(str(i))%2 == 0
+        li = map(helper, nums)   
+        return sum(li)

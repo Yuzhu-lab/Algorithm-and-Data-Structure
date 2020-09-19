@@ -1,0 +1,12 @@
+class Solution:
+    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+        flowerbed = [0] + flowerbed + [0]
+        pointer  = next(i for i,x in enumerate(flowerbed) if not x)
+        print(pointer)
+        while pointer <= len(flowerbed)-3:
+            if flowerbed[pointer] == flowerbed[pointer + 1] == flowerbed[pointer + 2]:
+                n -= 1
+                pointer += 2
+            else:
+                pointer += 1
+        return n <=0

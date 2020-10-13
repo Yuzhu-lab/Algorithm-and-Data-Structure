@@ -1,0 +1,17 @@
+Idea:
+To calculate how many same letter substring there is,
+the 1st thing is chop up the original string and then for each substring, we calculate how many small ones there
+eg: zzz 1+2+3
+Thus we could add them up as we found more z in this process.
+
+Code:
+def co(string):
+    if len(string) == 1:
+        return 1
+    samecha = 1
+    res = 1
+    for i in range(0,len(string)-1):
+        if string[i] == string[i+1]:
+            samecha += 1
+        res += samecha
+    return res

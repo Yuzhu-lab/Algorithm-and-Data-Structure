@@ -1,0 +1,19 @@
+Idea:
+The goal is to do the transformation until not need to. Thus we just need to compare the result of Comparison each round compared with the version before each comparison.
+We just need to make a shallow copy of each round and save it at another address
+
+Code:
+def assemble(li):
+    if len(li) <= 2:
+        return 0
+    while True:
+        copy = li[::]
+        while curr < len(li)-1:
+            if li[curr] > li[curr-1] & li[curr] > li[curr+1]:
+                li[curr] -= 1
+            elif (li[curr] < li[curr-1]) & (li[right] < li[curr+1]):
+                li[curr] -= 1
+            curr += 1
+        if copy == li:
+            break
+    return li

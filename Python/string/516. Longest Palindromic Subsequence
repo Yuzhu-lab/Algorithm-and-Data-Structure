@@ -1,0 +1,20 @@
+# Dynamic Programming 
+# matrix to contain all the results
+import numpy as np
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        l = len(s)
+        M = np.zeros((l,l))
+        for length in range(1, l+1):
+            for i in range(0, l-length+1):
+                j = i + length -1
+                if i == j:
+                    M[i][j]=1  
+                elif s[i] == s[j]:
+                    M[i][j] = M[i+1][j-1] + 2
+                else:
+                    M[i][j] = max(M[i+1][j], M[i][j-1])
+        return int(np.amax(M))
+# Like the Fabionacci Question, I only care about the closest two l (l-1)&(l-2)
+# instead of making a matrix, I just put 3 vectors
+

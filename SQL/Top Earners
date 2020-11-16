@@ -1,0 +1,9 @@
+select salary*months as earnings, count(*) from employee
+group by 1
+order by 1 desc limit 1; 
+
+# select ***
+#group by ***
+#order by ***
+
+#group/order by 1 means that 1 refers to the first term after select;

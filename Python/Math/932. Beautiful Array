@@ -1,0 +1,8 @@
+class Solution:
+    def beautifulArray(self, N: int) -> List[int]:
+        res = [1]
+        while len(res) < N:
+            res1 = [i*2 -1 for i in res]
+            res2 = [i*2 for i in res]
+            res = res1+res2
+        return [i for i in res if i <=N]

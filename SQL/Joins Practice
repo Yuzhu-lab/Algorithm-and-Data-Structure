@@ -1,0 +1,18 @@
+# A WHERE clause is used is filter records from a result.  The filter occurs before any groupings are made.
+# A HAVING clause is used to filter values from a group.
+
+select city.name 
+from city 
+inner join country 
+on city.countrycode = country.code
+where country.continent = "Africa";
+
+select COUNTRY.Continent, floor(avg(CITY.Population)) from Country 
+inner join city
+on CITY.CountryCode = COUNTRY.Code
+group by COUNTRY.Continent;
+
+select sum(city.population) from city 
+inner join country 
+on CITY.CountryCode = COUNTRY.Code
+where country.CONTINENT = "Asia";

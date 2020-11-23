@@ -1,0 +1,25 @@
+# A brutal force answer is to write 4 nested loops, which would be O(n^4) Time Complexity. 
+# Another thought is like two sum, let (A+B) = -(C+D)
+# time complexity is O(n^2)
+
+class Solution:
+    def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
+        cache = {}
+        res = 0
+        for x in A:
+            for y in B:
+                if x+y in cache:
+                    cache[x+y] += 1
+                else:
+                    cache[x+y] = 1
+        for m in C:
+            for n in D:
+                if -(m+n) in cache:
+                    res += cache[-(m+n)]
+        return res
+        
+from collections import Counter
+class Solution:
+    def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
+        AB = Counter(x+y for x in A for y in B)
+        return sum(AB[-x-y] for x in C for y in D)

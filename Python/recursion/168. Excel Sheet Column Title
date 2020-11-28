@@ -1,0 +1,14 @@
+class Solution:
+    def convertToTitle(self, n: int) -> str:
+        if n == 0:
+            return ""
+        return self.convertToTitle((n-1)//26) + chr(ord("A")+ (n-1)%26)
+if n == 0: return "" else self.convertToTitle((n-1)//26) + chr(ord("A")+ (n-1)%26)
+class Solution:
+    def convertToTitle(self, n: int) -> str:
+        dic = [chr(i) for i in range(ord("A"), ord("Z")+1)]
+        res = ""
+        while n > 0:
+            res+=dic[(n-1)%26]
+            n = (n-1)//26 
+        return res[::-1]

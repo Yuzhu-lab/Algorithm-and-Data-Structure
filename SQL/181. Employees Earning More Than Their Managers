@@ -1,0 +1,14 @@
+select 
+    A.name as "employee"
+from 
+    employee as A,
+    employee as B
+where 
+    A.managerid = B.id and A.salary > B.salary; 
+    
+select 
+    A.name as "employee"
+from 
+    employee as A inner join
+    employee as B
+    where A.managerid = B.id and A.salary > B.salary;

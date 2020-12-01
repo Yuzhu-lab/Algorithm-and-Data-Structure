@@ -1,0 +1,5 @@
+# Group By clause is often used when I need to do numeric operation like avg, sum, max etc by setting a column as index
+select email from
+    (select email, count(id) as c from Person
+    group by email) as T
+where c> 1;

@@ -1,0 +1,20 @@
+class Solution:
+    def decodeAtIndex(self, S: str, K: int) -> str:
+        #Find the length of string pattern final and then take module of len to get the position. Reverse S 
+        target_len = 0
+        for x in S:
+            if x.isalpha():
+                target_len += 1
+            else:
+                target_len *= int(x)
+        res = K%target_len
+
+        for y in reversed(S):
+            K = K%target_len
+            if K == 0 and y.isalpha():
+                return y
+            if y.isdigit():
+                target_len /= int(y)
+            if y.isalpha():
+                target_len -= 1
+                

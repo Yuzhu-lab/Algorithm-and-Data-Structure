@@ -1,0 +1,15 @@
+from collections import Counter
+class Solution:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        D = Counter(arr1)
+        res = []
+        for x in arr2:
+            res += D[x] * [x]
+            arr1 = list(filter(lambda a: a!=x,arr1))
+        res += sorted(arr1)
+        return res
+        
+class Solution:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        D = {b:i for i,b in enumerate(arr2) }
+        return sorted(arr1, key = lambda a:D.get(a, 1000+a))

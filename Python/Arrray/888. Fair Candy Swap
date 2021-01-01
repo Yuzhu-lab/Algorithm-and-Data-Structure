@@ -1,0 +1,13 @@
+# Set is unordered and unindexed
+# If you need ordered and unchangable array ---- Tuple
+# The idea is similar to two sum. Since I don't need the index, duplication and order I change the list to set, which save me time complexity. Set Time Complexity is O(1)
+# Iterate through list using in operation is O(N), set were implemented as HashTable so that the in operator in Set is only O(1)
+
+class Solution:
+    def fairCandySwap(self, A: List[int], B: List[int]) -> List[int]:
+        x,y,A,B = sum(A), sum(B), set(A), set(B)
+        look = (y - x)//2
+        for x in A:
+            if x+look in B:
+                return [x, x+look]
+        return []

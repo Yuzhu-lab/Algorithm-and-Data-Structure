@@ -1,0 +1,7 @@
+#Given that each element in arr is distinct, we can think if we could use hashmap.
+class Solution:
+    def canFormArray(self, arr: List[int], pieces: List[List[int]]) -> bool:
+        D, res = {x[0]:x for x in pieces}, []
+        for y in arr:
+            res += D.get(y, [])
+        return res == arr

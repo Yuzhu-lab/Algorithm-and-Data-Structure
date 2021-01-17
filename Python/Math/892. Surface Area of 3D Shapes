@@ -1,0 +1,25 @@
+class Solution:
+    def surfaceArea(self, grid: List[List[int]]) -> int:
+        m, n = len(grid),len(grid[0])
+        sx,sy,sz = 0,0,0
+        
+        for x in range(0,n):
+            prev = 0
+            for y in range(0,m):
+                sx += abs(grid[x][y] - prev)
+                prev = grid[x][y]
+            sx += prev
+            
+        
+        for x in range(0,m):
+            prev = 0
+            for y in range(0,n):
+                sy += abs(grid[y][x] - prev)
+                prev = grid[y][x]
+                if grid[y][x]!=0:
+                    sz += 2
+            sy += prev
+        # print(sx)
+        # print(sy)
+                    
+        return sx+sy+sz

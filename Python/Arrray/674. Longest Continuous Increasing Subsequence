@@ -1,0 +1,14 @@
+class Solution:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        start, end, res, temp = 0,0,1,1
+        limit = len(nums)
+        for i in range(0, limit-1):
+            if nums[i] < nums[i+1]:
+                temp += 1
+            else:
+                # print(temp)
+                temp = 1
+            res = max(temp, res)           
+        return res

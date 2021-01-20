@@ -1,0 +1,13 @@
+class Solution:
+    def findJudge(self, N: int, trust: List[List[int]]) -> int:
+        res = []
+        score = ["a"] +[0] * (N)
+        for ele in trust:
+            score[ele[0]] -= 1
+            score[ele[1]] += 1
+        for i in range(N+1):
+            if score[i] == N - 1:
+                res.append(i)
+        if len(res) != 1:
+            return -1
+        return res[0]

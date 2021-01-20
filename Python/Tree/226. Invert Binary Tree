@@ -1,0 +1,28 @@
+# if root is None, this function should return None
+# elif root is a number without children, it should return root itself.
+# elif root has children, it should swith children and return left as right, right as left
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        if root:
+            root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
+            return root
+
+# Using stack and iterate all node without recursion
+
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            if node:
+                node.left, node.right = node.right, node.left
+                stack += node.left, node.right
+        return root

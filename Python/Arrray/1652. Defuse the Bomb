@@ -1,0 +1,14 @@
+class Solution:
+    def decrypt(self, code: List[int], k: int) -> List[int]:
+        n = len(code)
+        if k == 0:
+            return [0] * n
+        code = (abs(k)//n + 2) * code
+        res = code.copy()
+        if k > 0:
+            for i in range(0, n):
+                res[i] = sum(code[i+1:i+k+1])
+            return res[:n]
+        for j in range(n, 2*n):
+            res[j] = sum(code[j-abs(k):j])
+        return res[n:2*n]

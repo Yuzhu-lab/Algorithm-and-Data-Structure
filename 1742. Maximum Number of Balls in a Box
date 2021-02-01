@@ -1,0 +1,16 @@
+class Solution:
+    def countBalls(self, lowLimit: int, highLimit: int) -> int:
+        D, container = {}, 1
+        for x in range(lowLimit, highLimit+1):
+            temp = 0
+            while x > 9:
+                temp += x%10
+                x //= 10
+            temp += x
+            if temp in D:
+                D[temp] += 1
+                container = max(container, D[temp])
+            else:
+                D[temp] = 1
+        print(D)
+        return container

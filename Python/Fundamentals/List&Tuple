@@ -1,0 +1,18 @@
+A list is an ordered collection of objects, the objects can be of different types
+a = [21.42, 'foobar', 3, 4, 'bark', False, 3.14159]
+
+import numpy as np
+li = [1,2,3,4,5] * 2
+np.array(li) * 2
+li * n 会把原来的list append为 n 倍长
+np.array(li) 让每一个元素乘以n
+
+There is wrong data in ret ts, how to varify the data?
+1. Cross validation from multiple vandors
+2. today's return compare with previous 10-day moving average
+
+List & Tuple
+Tuple is immutable, list is mutable
+Hashmap key has to be immutable because we need to calculate the hash value for it. 
+
+np array is way faster because of the homogenous data type. In list, it could be different types. 

@@ -11,3 +11,25 @@ class Solution:
         except:
             return False
  # Use try-except to check for conditions multiple times
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: ListNode) -> bool:
+        try:
+            car1, car2 = head, head
+            if car1 == None or car1.next == None:
+                return False
+            
+            while car1 and car2:
+                car1 = car1.next
+                car2 = car2.next.next
+                if car1 == car2:
+                    return True
+            return False
+        except:
+            return False

@@ -1,0 +1,14 @@
+class Solution:
+    def findMissingRanges(self, nums: List[int], lower: int, upper: int) -> List[str]:
+        res =[] 
+        nums = [lower-1] + nums + [upper+1]
+        prev, curr = 0,1
+        while curr < len(nums):
+            start, end = nums[prev]+1, nums[curr]-1
+            if end - start == 0:
+                res.append(str(start))
+            elif end - start > 0:
+                res.append(str(start)+"->"+str(end))
+            prev += 1
+            curr += 1
+        return res

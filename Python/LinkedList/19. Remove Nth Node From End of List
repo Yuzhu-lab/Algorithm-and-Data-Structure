@@ -1,0 +1,18 @@
+For linked list, I need 3 variables to call so I use a = b = c at the 1st line
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+        car1 = car2 = head
+        for i in range(0, n):
+            car1 = car1.next
+        if not car1:
+            return head.next
+        while car1.next:
+            car1 = car1.next
+            car2 = car2.next
+        car2.next = car2.next.next
+        return head

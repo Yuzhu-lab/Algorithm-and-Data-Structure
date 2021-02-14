@@ -1,0 +1,12 @@
+class Solution:
+    def generatePossibleNextMoves(self, s: str) -> List[str]:
+        res = []
+        car1, car2 = 0,1
+        while car2 < len(s):
+            if s[car1] == s[car2] and s[car1]== "+":
+                temp = s
+                temp = temp[0:car1]+"--"+temp[car2+1:]
+                res.append(temp)
+            car1 += 1
+            car2 += 1
+        return res

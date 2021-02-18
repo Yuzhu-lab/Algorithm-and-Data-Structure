@@ -1,0 +1,17 @@
+# For this question, we need to start from 0 and increment one by one to see how the total is incvremented
+# [1,2,3] 3 elements are the least to satisfy the constraints. 
+# [1,2,3,4] Compared with the original one, we have [2,3,4], [1,2,3,4]
+# [1,2,3,4,5] Compared with the last one, we have [3,4,5], [2,3,4,5], [1,2,3,4,5]
+# what if we have a stopped list [1,2,3,6,7,8] We start from 1 and have two big short array [1,2,3], [6,7,8] and the result is just the sum of these two small questions. 
+# We use temp to do two things, 1st is to record the increment, 2nd is to restart when the array is interrupted.
+
+class Solution:
+    def numberOfArithmeticSlices(self, A: List[int]) -> int:
+        total, temp = 0,0
+        for i in range(2, len(A)):
+            if A[i] - A[i-1] == A[i-1] - A[i-2]:
+                temp += 1
+                total += temp
+            else:
+                temp = 0
+        return total

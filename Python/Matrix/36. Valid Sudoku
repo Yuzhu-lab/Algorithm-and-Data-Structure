@@ -1,0 +1,17 @@
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        row, col, box = [{} for i in range(0,9)],[{} for i in range(0,9)],[{} for i in range(0,9)]
+        # loop all the numbers in 9*9 matrix but only once
+        for i in range(0,9):
+            for j in range(0,9):
+                # 先判断该cell是否为空
+                if board[i][j] != ".":
+                    curr = board[i][j]
+                    row[i][curr] = row[i].get(curr, 0) + 1
+                    col[j][curr] = col[j].get(curr, 0) + 1
+                    box_index = i//3*3 + j//3
+                    box[box_index][curr] = box[box_index].get(curr,0) + 1
+                    if row[i][curr]>1 or col[j][curr]>1 or box[box_index][curr]>1:
+                        return False
+        return True
+        

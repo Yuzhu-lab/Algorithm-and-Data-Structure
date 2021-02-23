@@ -1,0 +1,10 @@
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        D = {}
+        flag = 0
+        for x in s:
+            D[x] = D.get(x,0) + 1
+        for key in D:
+            if D[key] % 2 == 1:
+                flag += 1
+        return flag <= 1

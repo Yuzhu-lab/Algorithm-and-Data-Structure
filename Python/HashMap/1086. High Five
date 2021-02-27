@@ -1,0 +1,13 @@
+class Solution:
+    def highFive(self, items: List[List[int]]) -> List[List[int]]:
+        D = {}
+        for ele in items:
+            D[ele[0]] = D.get(ele[0], [])+[ele[1]]
+        
+        res=[]
+        for x in D:
+            D[x] = sorted(D[x])
+            D[x] = round((sum(D[x][-5:])/5), 3)
+            res.append([x, int(D[x])])
+            
+        return sorted(res)

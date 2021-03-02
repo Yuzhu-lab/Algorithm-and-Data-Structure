@@ -1,0 +1,14 @@
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        D = {}
+        prev = None
+        avoid, using = 0,0
+        for x in nums:
+            D[x] = D.get(x,0) + 1
+        for y in sorted(D):
+            if y-1 != prev:
+                avoid, using = max(avoid, using), D[y]*y + max(avoid, using)
+            else:
+                avoid, using = max(avoid, using), D[y]*y + avoid
+            prev = y
+        return max(avoid, using)

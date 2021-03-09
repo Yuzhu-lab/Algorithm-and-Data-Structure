@@ -1,0 +1,14 @@
+
+# This is a DP problem, the 1st thing is to find what is the mathmatical formula
+# Secondly, we need to find what is the case0. It should be all cases at the coner and upper and left side.
+
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        D = {(1,1):0, (1,2):1, (2,1):1}
+        for i in range(0, max(m,n)+1):
+            D[(1,i)] = 1
+            D[(i,1)] = 1
+        for i in range(2,m+1):
+            for j in range(2,n+1):
+                D[(i,j)] = D[(i-1,j)] + D[(i,j-1)]
+        return D[(m,n)]

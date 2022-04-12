@@ -1,0 +1,12 @@
+select product_id 
+from Products
+WHERE LOW_FATS = 'Y' AND RECYCLABLE = 'Y';
+
+SELECT NAME
+FROM Customer
+where REFEREE_ID <> 2 OR REFEREE_ID IS NULL; 
+
+select name as "Customers" from customers 
+where customers.id not in 
+(
+select customerID from Orders);

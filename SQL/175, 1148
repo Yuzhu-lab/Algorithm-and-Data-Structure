@@ -1,0 +1,18 @@
+# Write your MySQL query statement below
+select firstname, lastname, city, state
+from 
+person p 
+left join address a 
+on p.personid = a.personid
+
+select distinct author_id as id
+from views
+where author_id = viewer_id
+order by id 
+
+# Write your MySQL query statement below
+select customer_id, count(*) as count_no_trans
+from Visits V left join Transactions T
+on V.visit_id = T.visit_id
+where transaction_id is null
+group by customer_id;

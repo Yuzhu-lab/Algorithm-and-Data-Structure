@@ -1,0 +1,17 @@
+# Write your MySQL query statement below
+select * 
+from patients
+where conditions like 'DIAB1%' or CONDITIONS LIKE '% DIAB1%'
+
+# Write your MySQL query statement below
+select sell_date, count(DISTINCT PRODUCT) as num_sold, 
+group_concat(distinct product order by product asc sepArator ',') as products
+FROM Activities
+group by sell_date
+ORDER BY Sell_date ASC
+
+# Write your MySQL query statement below
+select user_id, 
+concat(Upper(substring(name, 1, 1)), lower(substring(name, 2, length(name)-1))) as Name
+from Users
+order by user_id

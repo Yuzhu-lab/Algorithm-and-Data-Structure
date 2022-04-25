@@ -1,0 +1,26 @@
+#509. Fibonacci Number
+from func_tools import cache, lru_cache
+class Solution:
+    # @cache
+    @lru_cache(maxsize=5)
+    def fib(self, n: int) -> int:
+        if n <= 1:
+            return n
+        return self.fib(n-1) + self.fib(n-2)
+        # D = dict()
+        # D[0], D[1] = 0, 1
+        # for i in range (2, n+1):
+        #     D[i] = D[i-1] + D[i-2]
+        # return D[n]
+#可以使用计划递归， decorator @cache 会记住以前算过的数字。 不用计划递归的话时间复杂度是exponential的。还可以用另一个装饰器： @lru_cache(maxsize=m) 可以限制记住最近m次计算的结果。
+
+from functools import cache, lru_cache
+
+class Solution:
+    @lru_cache(maxsize=10)
+    def tribonacci(self, n: int) -> int:
+        if n == 0: 
+            return 0
+        elif n <= 2: 
+            return 1
+        return sum(self.tribonacci(n-i) for i in range (1, 4))

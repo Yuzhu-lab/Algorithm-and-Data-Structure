@@ -1,0 +1,31 @@
+70. Climbing Stairs
+from functools import lru_cache, cache 
+class Solution:
+    @lru_cache(maxsize = 10)
+    def climbStairs(self, n: int) -> int:
+        if n <= 3: return n
+        return self.climbStairs(n-2) + self.climbStairs(n-1)
+        
+746. Min Cost Climbing Stairs
+class Solution:
+    # @cache
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        D = dict()
+        D[1], D[2] = 0, min(cost[:2])
+        if len(cost) == 1: return D[1]
+        if len(cost) == 2: return D[2]
+        for i in range(3, len(cost) + 1):
+            D[i] = min(D[i-1] + cost[:i][-1], D[i-2] + cost[:i][-2])
+        return D[len(cost)]
+
+#此题目是一个优化问题
+import functools
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        @lru_cache(maxsize = 10)
+        #此函数用于计算爬到第i层的最小cost
+        def dp(i: int) -> int: 
+            if i <= 1: return 0
+            return min(dp(i-1)+cost[i-1],
+                       dp(i-2)+cost[i-2])
+        return dp(len(cost))

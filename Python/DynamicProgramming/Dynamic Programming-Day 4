@@ -1,0 +1,21 @@
+740. Delete and Earn
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        D = dict()
+        minimum, maximum = 999999, -999999
+        for ele in nums: 
+            if ele not in D: 
+                D[ele] = ele
+                minimum, maximum = min(ele, minimum), max(ele, maximum)
+            else: 
+                D[ele] += ele
+        N = len(D)        
+        
+        @cache        
+        def dp(i: int, j: int) -> int: 
+            if j < i: return 0
+            if i == j: return D[i]
+            if j not in D: D[j] = 0
+            return max(D[j] + dp(i, j-2), dp(i, j-1))
+        
+        return dp(minimum, maximum)
